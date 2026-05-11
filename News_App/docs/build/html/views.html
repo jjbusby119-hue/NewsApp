@@ -1,0 +1,1095 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Views &mdash; News App 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Models" href="models.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            News App
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Views</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.APILoginView"><code class="docutils literal notranslate"><span class="pre">APILoginView</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.APILoginView.post"><code class="docutils literal notranslate"><span class="pre">APILoginView.post()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.APILogoutView"><code class="docutils literal notranslate"><span class="pre">APILogoutView</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.APILogoutView.permission_classes"><code class="docutils literal notranslate"><span class="pre">APILogoutView.permission_classes</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.APILogoutView.post"><code class="docutils literal notranslate"><span class="pre">APILogoutView.post()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.ArticleApproveAPIView"><code class="docutils literal notranslate"><span class="pre">ArticleApproveAPIView</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.ArticleApproveAPIView.permission_classes"><code class="docutils literal notranslate"><span class="pre">ArticleApproveAPIView.permission_classes</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.ArticleApproveAPIView.post"><code class="docutils literal notranslate"><span class="pre">ArticleApproveAPIView.post()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.ArticleCreateView"><code class="docutils literal notranslate"><span class="pre">ArticleCreateView</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.ArticleCreateView.form_class"><code class="docutils literal notranslate"><span class="pre">ArticleCreateView.form_class</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.ArticleCreateView.form_valid"><code class="docutils literal notranslate"><span class="pre">ArticleCreateView.form_valid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.ArticleCreateView.model"><code class="docutils literal notranslate"><span class="pre">ArticleCreateView.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.ArticleCreateView.success_url"><code class="docutils literal notranslate"><span class="pre">ArticleCreateView.success_url</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.ArticleCreateView.template_name"><code class="docutils literal notranslate"><span class="pre">ArticleCreateView.template_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.ArticleCreateView.test_func"><code class="docutils literal notranslate"><span class="pre">ArticleCreateView.test_func()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.ArticleDeleteView"><code class="docutils literal notranslate"><span class="pre">ArticleDeleteView</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.ArticleDeleteView.delete"><code class="docutils literal notranslate"><span class="pre">ArticleDeleteView.delete()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.ArticleDeleteView.model"><code class="docutils literal notranslate"><span class="pre">ArticleDeleteView.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.ArticleDeleteView.success_url"><code class="docutils literal notranslate"><span class="pre">ArticleDeleteView.success_url</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.ArticleDeleteView.template_name"><code class="docutils literal notranslate"><span class="pre">ArticleDeleteView.template_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.ArticleDeleteView.test_func"><code class="docutils literal notranslate"><span class="pre">ArticleDeleteView.test_func()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.ArticleDetailAPIView"><code class="docutils literal notranslate"><span class="pre">ArticleDetailAPIView</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.ArticleDetailAPIView.delete"><code class="docutils literal notranslate"><span class="pre">ArticleDetailAPIView.delete()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.ArticleDetailAPIView.get"><code class="docutils literal notranslate"><span class="pre">ArticleDetailAPIView.get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.ArticleDetailAPIView.put"><code class="docutils literal notranslate"><span class="pre">ArticleDetailAPIView.put()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.ArticleDetailView"><code class="docutils literal notranslate"><span class="pre">ArticleDetailView</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.ArticleDetailView.context_object_name"><code class="docutils literal notranslate"><span class="pre">ArticleDetailView.context_object_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.ArticleDetailView.model"><code class="docutils literal notranslate"><span class="pre">ArticleDetailView.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.ArticleDetailView.template_name"><code class="docutils literal notranslate"><span class="pre">ArticleDetailView.template_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.ArticleDetailView.test_func"><code class="docutils literal notranslate"><span class="pre">ArticleDetailView.test_func()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.ArticleListCreateAPIView"><code class="docutils literal notranslate"><span class="pre">ArticleListCreateAPIView</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.ArticleListCreateAPIView.get"><code class="docutils literal notranslate"><span class="pre">ArticleListCreateAPIView.get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.ArticleListCreateAPIView.get_permissions"><code class="docutils literal notranslate"><span class="pre">ArticleListCreateAPIView.get_permissions()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.ArticleListCreateAPIView.post"><code class="docutils literal notranslate"><span class="pre">ArticleListCreateAPIView.post()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.ArticleListView"><code class="docutils literal notranslate"><span class="pre">ArticleListView</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.ArticleListView.context_object_name"><code class="docutils literal notranslate"><span class="pre">ArticleListView.context_object_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.ArticleListView.get_queryset"><code class="docutils literal notranslate"><span class="pre">ArticleListView.get_queryset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.ArticleListView.model"><code class="docutils literal notranslate"><span class="pre">ArticleListView.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.ArticleListView.template_name"><code class="docutils literal notranslate"><span class="pre">ArticleListView.template_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.ArticleListView.test_func"><code class="docutils literal notranslate"><span class="pre">ArticleListView.test_func()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.ArticleUpdateView"><code class="docutils literal notranslate"><span class="pre">ArticleUpdateView</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.ArticleUpdateView.form_class"><code class="docutils literal notranslate"><span class="pre">ArticleUpdateView.form_class</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.ArticleUpdateView.form_valid"><code class="docutils literal notranslate"><span class="pre">ArticleUpdateView.form_valid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.ArticleUpdateView.get_success_url"><code class="docutils literal notranslate"><span class="pre">ArticleUpdateView.get_success_url()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.ArticleUpdateView.model"><code class="docutils literal notranslate"><span class="pre">ArticleUpdateView.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.ArticleUpdateView.template_name"><code class="docutils literal notranslate"><span class="pre">ArticleUpdateView.template_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.ArticleUpdateView.test_func"><code class="docutils literal notranslate"><span class="pre">ArticleUpdateView.test_func()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.IsAuthenticatedReader"><code class="docutils literal notranslate"><span class="pre">IsAuthenticatedReader</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.IsAuthenticatedReader.has_permission"><code class="docutils literal notranslate"><span class="pre">IsAuthenticatedReader.has_permission()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.IsEditor"><code class="docutils literal notranslate"><span class="pre">IsEditor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.IsEditor.has_permission"><code class="docutils literal notranslate"><span class="pre">IsEditor.has_permission()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.IsEditorOrJournalist"><code class="docutils literal notranslate"><span class="pre">IsEditorOrJournalist</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.IsEditorOrJournalist.has_object_permission"><code class="docutils literal notranslate"><span class="pre">IsEditorOrJournalist.has_object_permission()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.IsEditorOrJournalist.has_permission"><code class="docutils literal notranslate"><span class="pre">IsEditorOrJournalist.has_permission()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.IsJournalist"><code class="docutils literal notranslate"><span class="pre">IsJournalist</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.IsJournalist.has_permission"><code class="docutils literal notranslate"><span class="pre">IsJournalist.has_permission()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.LoginView"><code class="docutils literal notranslate"><span class="pre">LoginView</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.LoginView.dispatch"><code class="docutils literal notranslate"><span class="pre">LoginView.dispatch()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.LoginView.form_class"><code class="docutils literal notranslate"><span class="pre">LoginView.form_class</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.LoginView.form_valid"><code class="docutils literal notranslate"><span class="pre">LoginView.form_valid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.LoginView.success_url"><code class="docutils literal notranslate"><span class="pre">LoginView.success_url</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.LoginView.template_name"><code class="docutils literal notranslate"><span class="pre">LoginView.template_name</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.LogoutView"><code class="docutils literal notranslate"><span class="pre">LogoutView</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.LogoutView.get"><code class="docutils literal notranslate"><span class="pre">LogoutView.get()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.NewsletterCreateView"><code class="docutils literal notranslate"><span class="pre">NewsletterCreateView</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.NewsletterCreateView.form_class"><code class="docutils literal notranslate"><span class="pre">NewsletterCreateView.form_class</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.NewsletterCreateView.form_valid"><code class="docutils literal notranslate"><span class="pre">NewsletterCreateView.form_valid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.NewsletterCreateView.model"><code class="docutils literal notranslate"><span class="pre">NewsletterCreateView.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.NewsletterCreateView.success_url"><code class="docutils literal notranslate"><span class="pre">NewsletterCreateView.success_url</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.NewsletterCreateView.template_name"><code class="docutils literal notranslate"><span class="pre">NewsletterCreateView.template_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.NewsletterCreateView.test_func"><code class="docutils literal notranslate"><span class="pre">NewsletterCreateView.test_func()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.NewsletterDeleteView"><code class="docutils literal notranslate"><span class="pre">NewsletterDeleteView</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.NewsletterDeleteView.delete"><code class="docutils literal notranslate"><span class="pre">NewsletterDeleteView.delete()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.NewsletterDeleteView.model"><code class="docutils literal notranslate"><span class="pre">NewsletterDeleteView.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.NewsletterDeleteView.success_url"><code class="docutils literal notranslate"><span class="pre">NewsletterDeleteView.success_url</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.NewsletterDeleteView.template_name"><code class="docutils literal notranslate"><span class="pre">NewsletterDeleteView.template_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.NewsletterDeleteView.test_func"><code class="docutils literal notranslate"><span class="pre">NewsletterDeleteView.test_func()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.NewsletterDetailView"><code class="docutils literal notranslate"><span class="pre">NewsletterDetailView</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.NewsletterDetailView.context_object_name"><code class="docutils literal notranslate"><span class="pre">NewsletterDetailView.context_object_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.NewsletterDetailView.model"><code class="docutils literal notranslate"><span class="pre">NewsletterDetailView.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.NewsletterDetailView.template_name"><code class="docutils literal notranslate"><span class="pre">NewsletterDetailView.template_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.NewsletterDetailView.test_func"><code class="docutils literal notranslate"><span class="pre">NewsletterDetailView.test_func()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.NewsletterListView"><code class="docutils literal notranslate"><span class="pre">NewsletterListView</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.NewsletterListView.context_object_name"><code class="docutils literal notranslate"><span class="pre">NewsletterListView.context_object_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.NewsletterListView.get_queryset"><code class="docutils literal notranslate"><span class="pre">NewsletterListView.get_queryset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.NewsletterListView.model"><code class="docutils literal notranslate"><span class="pre">NewsletterListView.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.NewsletterListView.template_name"><code class="docutils literal notranslate"><span class="pre">NewsletterListView.template_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.NewsletterListView.test_func"><code class="docutils literal notranslate"><span class="pre">NewsletterListView.test_func()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.NewsletterUpdateView"><code class="docutils literal notranslate"><span class="pre">NewsletterUpdateView</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.NewsletterUpdateView.form_class"><code class="docutils literal notranslate"><span class="pre">NewsletterUpdateView.form_class</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.NewsletterUpdateView.form_valid"><code class="docutils literal notranslate"><span class="pre">NewsletterUpdateView.form_valid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.NewsletterUpdateView.get_success_url"><code class="docutils literal notranslate"><span class="pre">NewsletterUpdateView.get_success_url()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.NewsletterUpdateView.model"><code class="docutils literal notranslate"><span class="pre">NewsletterUpdateView.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.NewsletterUpdateView.template_name"><code class="docutils literal notranslate"><span class="pre">NewsletterUpdateView.template_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.NewsletterUpdateView.test_func"><code class="docutils literal notranslate"><span class="pre">NewsletterUpdateView.test_func()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.PublisherCreateView"><code class="docutils literal notranslate"><span class="pre">PublisherCreateView</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.PublisherCreateView.fields"><code class="docutils literal notranslate"><span class="pre">PublisherCreateView.fields</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.PublisherCreateView.form_valid"><code class="docutils literal notranslate"><span class="pre">PublisherCreateView.form_valid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.PublisherCreateView.model"><code class="docutils literal notranslate"><span class="pre">PublisherCreateView.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.PublisherCreateView.success_url"><code class="docutils literal notranslate"><span class="pre">PublisherCreateView.success_url</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.PublisherCreateView.template_name"><code class="docutils literal notranslate"><span class="pre">PublisherCreateView.template_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.PublisherCreateView.test_func"><code class="docutils literal notranslate"><span class="pre">PublisherCreateView.test_func()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.SignupView"><code class="docutils literal notranslate"><span class="pre">SignupView</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.SignupView.dispatch"><code class="docutils literal notranslate"><span class="pre">SignupView.dispatch()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.SignupView.form_class"><code class="docutils literal notranslate"><span class="pre">SignupView.form_class</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.SignupView.form_valid"><code class="docutils literal notranslate"><span class="pre">SignupView.form_valid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.SignupView.model"><code class="docutils literal notranslate"><span class="pre">SignupView.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.SignupView.success_url"><code class="docutils literal notranslate"><span class="pre">SignupView.success_url</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.SignupView.template_name"><code class="docutils literal notranslate"><span class="pre">SignupView.template_name</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.SubscribedArticlesAPIView"><code class="docutils literal notranslate"><span class="pre">SubscribedArticlesAPIView</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.SubscribedArticlesAPIView.get"><code class="docutils literal notranslate"><span class="pre">SubscribedArticlesAPIView.get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NewsApp.views.SubscribedArticlesAPIView.permission_classes"><code class="docutils literal notranslate"><span class="pre">SubscribedArticlesAPIView.permission_classes</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.approve_article"><code class="docutils literal notranslate"><span class="pre">approve_article()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.can_approve_articles"><code class="docutils literal notranslate"><span class="pre">can_approve_articles()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.can_create_content"><code class="docutils literal notranslate"><span class="pre">can_create_content()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.can_delete_content"><code class="docutils literal notranslate"><span class="pre">can_delete_content()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.can_edit_content"><code class="docutils literal notranslate"><span class="pre">can_edit_content()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.can_view_content"><code class="docutils literal notranslate"><span class="pre">can_view_content()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.is_editor"><code class="docutils literal notranslate"><span class="pre">is_editor()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.is_journalist"><code class="docutils literal notranslate"><span class="pre">is_journalist()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.is_reader"><code class="docutils literal notranslate"><span class="pre">is_reader()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.profile_view"><code class="docutils literal notranslate"><span class="pre">profile_view()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.reader_subscriptions"><code class="docutils literal notranslate"><span class="pre">reader_subscriptions()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.subscribe_to_journalist"><code class="docutils literal notranslate"><span class="pre">subscribe_to_journalist()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.subscribe_to_publisher"><code class="docutils literal notranslate"><span class="pre">subscribe_to_publisher()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.unsubscribe_from_journalist"><code class="docutils literal notranslate"><span class="pre">unsubscribe_from_journalist()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#NewsApp.views.unsubscribe_from_publisher"><code class="docutils literal notranslate"><span class="pre">unsubscribe_from_publisher()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">News App</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Views</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/views.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-NewsApp.views">
+<span id="views"></span><h1>Views<a class="headerlink" href="#module-NewsApp.views" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="NewsApp.views.APILoginView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">APILoginView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#APILoginView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.APILoginView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObtainAuthToken</span></code></p>
+<p>Return an auth token and basic user info on successful login.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>JSON with <code class="docutils literal notranslate"><span class="pre">token</span></code>, <code class="docutils literal notranslate"><span class="pre">user_id</span></code>, <code class="docutils literal notranslate"><span class="pre">username</span></code>, and <code class="docutils literal notranslate"><span class="pre">role</span></code>.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.APILoginView.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#APILoginView.post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.APILoginView.post" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="NewsApp.views.APILogoutView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">APILogoutView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#APILogoutView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.APILogoutView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">APIView</span></code></p>
+<p>Delete the current user’s auth token, effectively logging them out.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.APILogoutView.permission_classes">
+<span class="sig-name descname"><span class="pre">permission_classes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'rest_framework.permissions.IsAuthenticated'&gt;]</span></span><a class="headerlink" href="#NewsApp.views.APILogoutView.permission_classes" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.APILogoutView.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#APILogoutView.post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.APILogoutView.post" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleApproveAPIView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">ArticleApproveAPIView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#ArticleApproveAPIView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.ArticleApproveAPIView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">APIView</span></code></p>
+<p>Approve an article (Editors only).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pk</strong> – Primary key of the <code class="xref py py-class docutils literal notranslate"><span class="pre">Article</span></code> to approve.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Serialized article data with HTTP 200.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleApproveAPIView.permission_classes">
+<span class="sig-name descname"><span class="pre">permission_classes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'NewsApp.views.IsEditor'&gt;]</span></span><a class="headerlink" href="#NewsApp.views.ArticleApproveAPIView.permission_classes" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleApproveAPIView.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#ArticleApproveAPIView.post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.ArticleApproveAPIView.post" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleCreateView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">ArticleCreateView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#ArticleCreateView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.ArticleCreateView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">LoginRequiredMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">UserPassesTestMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">CreateView</span></code></p>
+<p>Create a new article (Journalists only).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleCreateView.form_class">
+<span class="sig-name descname"><span class="pre">form_class</span></span><a class="headerlink" href="#NewsApp.views.ArticleCreateView.form_class" title="Link to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">ArticleForm</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleCreateView.form_valid">
+<span class="sig-name descname"><span class="pre">form_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">form</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#ArticleCreateView.form_valid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.ArticleCreateView.form_valid" title="Link to this definition"></a></dt>
+<dd><p>If the form is valid, save the associated model.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleCreateView.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#NewsApp.views.ArticleCreateView.model" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="models.html#NewsApp.models.Article" title="NewsApp.models.Article"><code class="xref py py-class docutils literal notranslate"><span class="pre">Article</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleCreateView.success_url">
+<span class="sig-name descname"><span class="pre">success_url</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/articles/'</span></span><a class="headerlink" href="#NewsApp.views.ArticleCreateView.success_url" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleCreateView.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'articles/article_write.html'</span></span><a class="headerlink" href="#NewsApp.views.ArticleCreateView.template_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleCreateView.test_func">
+<span class="sig-name descname"><span class="pre">test_func</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#ArticleCreateView.test_func"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.ArticleCreateView.test_func" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleDeleteView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">ArticleDeleteView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#ArticleDeleteView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.ArticleDeleteView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">LoginRequiredMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">UserPassesTestMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">DeleteView</span></code></p>
+<p>Delete an article. Journalists may only delete their own.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleDeleteView.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#ArticleDeleteView.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.ArticleDeleteView.delete" title="Link to this definition"></a></dt>
+<dd><p>Call the delete() method on the fetched object and then redirect to the
+success URL.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleDeleteView.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#NewsApp.views.ArticleDeleteView.model" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="models.html#NewsApp.models.Article" title="NewsApp.models.Article"><code class="xref py py-class docutils literal notranslate"><span class="pre">Article</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleDeleteView.success_url">
+<span class="sig-name descname"><span class="pre">success_url</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/articles/'</span></span><a class="headerlink" href="#NewsApp.views.ArticleDeleteView.success_url" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleDeleteView.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'articles/article_delete.html'</span></span><a class="headerlink" href="#NewsApp.views.ArticleDeleteView.template_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleDeleteView.test_func">
+<span class="sig-name descname"><span class="pre">test_func</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#ArticleDeleteView.test_func"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.ArticleDeleteView.test_func" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleDetailAPIView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">ArticleDetailAPIView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#ArticleDetailAPIView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.ArticleDetailAPIView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">APIView</span></code></p>
+<p>Retrieve, update, or delete a single article.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span></code>    — Visible per role (Readers: approved only).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PUT</span></code>    — Editors or the article’s own Journalist.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DELETE</span></code> — Editors or the article’s own Journalist.</p></li>
+</ul>
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleDetailAPIView.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#ArticleDetailAPIView.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.ArticleDetailAPIView.delete" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleDetailAPIView.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#ArticleDetailAPIView.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.ArticleDetailAPIView.get" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleDetailAPIView.put">
+<span class="sig-name descname"><span class="pre">put</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#ArticleDetailAPIView.put"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.ArticleDetailAPIView.put" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleDetailView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">ArticleDetailView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#ArticleDetailView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.ArticleDetailView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">LoginRequiredMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">UserPassesTestMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">DetailView</span></code></p>
+<p>Display a single article, enforcing role-based visibility.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleDetailView.context_object_name">
+<span class="sig-name descname"><span class="pre">context_object_name</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'article'</span></span><a class="headerlink" href="#NewsApp.views.ArticleDetailView.context_object_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleDetailView.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#NewsApp.views.ArticleDetailView.model" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="models.html#NewsApp.models.Article" title="NewsApp.models.Article"><code class="xref py py-class docutils literal notranslate"><span class="pre">Article</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleDetailView.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'articles/article_detail.html'</span></span><a class="headerlink" href="#NewsApp.views.ArticleDetailView.template_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleDetailView.test_func">
+<span class="sig-name descname"><span class="pre">test_func</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#ArticleDetailView.test_func"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.ArticleDetailView.test_func" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleListCreateAPIView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">ArticleListCreateAPIView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#ArticleListCreateAPIView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.ArticleListCreateAPIView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">APIView</span></code></p>
+<p>List articles or create a new one.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span></code>  — Returns articles filtered by the caller’s role.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">POST</span></code> — Creates an article; Journalists only.</p></li>
+</ul>
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleListCreateAPIView.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#ArticleListCreateAPIView.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.ArticleListCreateAPIView.get" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleListCreateAPIView.get_permissions">
+<span class="sig-name descname"><span class="pre">get_permissions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#ArticleListCreateAPIView.get_permissions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.ArticleListCreateAPIView.get_permissions" title="Link to this definition"></a></dt>
+<dd><p>Instantiates and returns the list of permissions that this view requires.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleListCreateAPIView.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#ArticleListCreateAPIView.post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.ArticleListCreateAPIView.post" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleListView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">ArticleListView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#ArticleListView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.ArticleListView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">LoginRequiredMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">UserPassesTestMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ListView</span></code></p>
+<p>List articles filtered by the current user’s role.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleListView.context_object_name">
+<span class="sig-name descname"><span class="pre">context_object_name</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'articles'</span></span><a class="headerlink" href="#NewsApp.views.ArticleListView.context_object_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleListView.get_queryset">
+<span class="sig-name descname"><span class="pre">get_queryset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#ArticleListView.get_queryset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.ArticleListView.get_queryset" title="Link to this definition"></a></dt>
+<dd><p>Return the list of items for this view.</p>
+<p>The return value must be an iterable and may be an instance of
+<cite>QuerySet</cite> in which case <cite>QuerySet</cite> specific behavior will be enabled.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleListView.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#NewsApp.views.ArticleListView.model" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="models.html#NewsApp.models.Article" title="NewsApp.models.Article"><code class="xref py py-class docutils literal notranslate"><span class="pre">Article</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleListView.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'articles/article_list.html'</span></span><a class="headerlink" href="#NewsApp.views.ArticleListView.template_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleListView.test_func">
+<span class="sig-name descname"><span class="pre">test_func</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#ArticleListView.test_func"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.ArticleListView.test_func" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleUpdateView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">ArticleUpdateView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#ArticleUpdateView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.ArticleUpdateView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">LoginRequiredMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">UserPassesTestMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateView</span></code></p>
+<p>Edit an existing article. Journalists may only edit their own.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleUpdateView.form_class">
+<span class="sig-name descname"><span class="pre">form_class</span></span><a class="headerlink" href="#NewsApp.views.ArticleUpdateView.form_class" title="Link to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">ArticleForm</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleUpdateView.form_valid">
+<span class="sig-name descname"><span class="pre">form_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">form</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#ArticleUpdateView.form_valid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.ArticleUpdateView.form_valid" title="Link to this definition"></a></dt>
+<dd><p>If the form is valid, save the associated model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleUpdateView.get_success_url">
+<span class="sig-name descname"><span class="pre">get_success_url</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#ArticleUpdateView.get_success_url"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.ArticleUpdateView.get_success_url" title="Link to this definition"></a></dt>
+<dd><p>Return the URL to redirect to after processing a valid form.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleUpdateView.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#NewsApp.views.ArticleUpdateView.model" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="models.html#NewsApp.models.Article" title="NewsApp.models.Article"><code class="xref py py-class docutils literal notranslate"><span class="pre">Article</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleUpdateView.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'articles/article_write.html'</span></span><a class="headerlink" href="#NewsApp.views.ArticleUpdateView.template_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.ArticleUpdateView.test_func">
+<span class="sig-name descname"><span class="pre">test_func</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#ArticleUpdateView.test_func"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.ArticleUpdateView.test_func" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="NewsApp.views.IsAuthenticatedReader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">IsAuthenticatedReader</span></span><a class="reference internal" href="_modules/NewsApp/views.html#IsAuthenticatedReader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.IsAuthenticatedReader" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BasePermission</span></code></p>
+<p>Allow access to any authenticated user.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.IsAuthenticatedReader.has_permission">
+<span class="sig-name descname"><span class="pre">has_permission</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">view</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#IsAuthenticatedReader.has_permission"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.IsAuthenticatedReader.has_permission" title="Link to this definition"></a></dt>
+<dd><p>Return <cite>True</cite> if permission is granted, <cite>False</cite> otherwise.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="NewsApp.views.IsEditor">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">IsEditor</span></span><a class="reference internal" href="_modules/NewsApp/views.html#IsEditor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.IsEditor" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BasePermission</span></code></p>
+<p>Allow access to Editors only.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.IsEditor.has_permission">
+<span class="sig-name descname"><span class="pre">has_permission</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">view</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#IsEditor.has_permission"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.IsEditor.has_permission" title="Link to this definition"></a></dt>
+<dd><p>Return <cite>True</cite> if permission is granted, <cite>False</cite> otherwise.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="NewsApp.views.IsEditorOrJournalist">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">IsEditorOrJournalist</span></span><a class="reference internal" href="_modules/NewsApp/views.html#IsEditorOrJournalist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.IsEditorOrJournalist" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BasePermission</span></code></p>
+<p>Allow Editors full access; restrict Journalists to their own objects.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.IsEditorOrJournalist.has_object_permission">
+<span class="sig-name descname"><span class="pre">has_object_permission</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">view</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#IsEditorOrJournalist.has_object_permission"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.IsEditorOrJournalist.has_object_permission" title="Link to this definition"></a></dt>
+<dd><p>Return <cite>True</cite> if permission is granted, <cite>False</cite> otherwise.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.IsEditorOrJournalist.has_permission">
+<span class="sig-name descname"><span class="pre">has_permission</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">view</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#IsEditorOrJournalist.has_permission"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.IsEditorOrJournalist.has_permission" title="Link to this definition"></a></dt>
+<dd><p>Return <cite>True</cite> if permission is granted, <cite>False</cite> otherwise.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="NewsApp.views.IsJournalist">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">IsJournalist</span></span><a class="reference internal" href="_modules/NewsApp/views.html#IsJournalist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.IsJournalist" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BasePermission</span></code></p>
+<p>Allow access to Journalists only.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.IsJournalist.has_permission">
+<span class="sig-name descname"><span class="pre">has_permission</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">view</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#IsJournalist.has_permission"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.IsJournalist.has_permission" title="Link to this definition"></a></dt>
+<dd><p>Return <cite>True</cite> if permission is granted, <cite>False</cite> otherwise.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="NewsApp.views.LoginView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">LoginView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#LoginView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.LoginView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">FormView</span></code></p>
+<p>Authenticate a user and redirect to the article list.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.LoginView.dispatch">
+<span class="sig-name descname"><span class="pre">dispatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#LoginView.dispatch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.LoginView.dispatch" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.LoginView.form_class">
+<span class="sig-name descname"><span class="pre">form_class</span></span><a class="headerlink" href="#NewsApp.views.LoginView.form_class" title="Link to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">CustomLoginForm</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.LoginView.form_valid">
+<span class="sig-name descname"><span class="pre">form_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">form</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#LoginView.form_valid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.LoginView.form_valid" title="Link to this definition"></a></dt>
+<dd><p>If the form is valid, redirect to the supplied URL.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.LoginView.success_url">
+<span class="sig-name descname"><span class="pre">success_url</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/articles/'</span></span><a class="headerlink" href="#NewsApp.views.LoginView.success_url" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.LoginView.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'registration/login.html'</span></span><a class="headerlink" href="#NewsApp.views.LoginView.template_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="NewsApp.views.LogoutView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">LogoutView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#LogoutView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.LogoutView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">View</span></code></p>
+<p>Log out the current user and redirect to login.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.LogoutView.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#LogoutView.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.LogoutView.get" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="NewsApp.views.NewsletterCreateView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">NewsletterCreateView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#NewsletterCreateView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.NewsletterCreateView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">LoginRequiredMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">UserPassesTestMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">CreateView</span></code></p>
+<p>Create a newsletter and associate it with the author (Journalists only).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.NewsletterCreateView.form_class">
+<span class="sig-name descname"><span class="pre">form_class</span></span><a class="headerlink" href="#NewsApp.views.NewsletterCreateView.form_class" title="Link to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">NewsletterForm</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.NewsletterCreateView.form_valid">
+<span class="sig-name descname"><span class="pre">form_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">form</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#NewsletterCreateView.form_valid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.NewsletterCreateView.form_valid" title="Link to this definition"></a></dt>
+<dd><p>If the form is valid, save the associated model.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.NewsletterCreateView.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#NewsApp.views.NewsletterCreateView.model" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="models.html#NewsApp.models.Newsletter" title="NewsApp.models.Newsletter"><code class="xref py py-class docutils literal notranslate"><span class="pre">Newsletter</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.NewsletterCreateView.success_url">
+<span class="sig-name descname"><span class="pre">success_url</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/newsletters/'</span></span><a class="headerlink" href="#NewsApp.views.NewsletterCreateView.success_url" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.NewsletterCreateView.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'newsletters/newsletter_form.html'</span></span><a class="headerlink" href="#NewsApp.views.NewsletterCreateView.template_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.NewsletterCreateView.test_func">
+<span class="sig-name descname"><span class="pre">test_func</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#NewsletterCreateView.test_func"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.NewsletterCreateView.test_func" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="NewsApp.views.NewsletterDeleteView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">NewsletterDeleteView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#NewsletterDeleteView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.NewsletterDeleteView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">LoginRequiredMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">UserPassesTestMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">DeleteView</span></code></p>
+<p>Delete a newsletter. Journalists may only delete their own.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.NewsletterDeleteView.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#NewsletterDeleteView.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.NewsletterDeleteView.delete" title="Link to this definition"></a></dt>
+<dd><p>Call the delete() method on the fetched object and then redirect to the
+success URL.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.NewsletterDeleteView.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#NewsApp.views.NewsletterDeleteView.model" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="models.html#NewsApp.models.Newsletter" title="NewsApp.models.Newsletter"><code class="xref py py-class docutils literal notranslate"><span class="pre">Newsletter</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.NewsletterDeleteView.success_url">
+<span class="sig-name descname"><span class="pre">success_url</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/newsletters/'</span></span><a class="headerlink" href="#NewsApp.views.NewsletterDeleteView.success_url" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.NewsletterDeleteView.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'newsletters/newsletter_delete.html'</span></span><a class="headerlink" href="#NewsApp.views.NewsletterDeleteView.template_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.NewsletterDeleteView.test_func">
+<span class="sig-name descname"><span class="pre">test_func</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#NewsletterDeleteView.test_func"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.NewsletterDeleteView.test_func" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="NewsApp.views.NewsletterDetailView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">NewsletterDetailView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#NewsletterDetailView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.NewsletterDetailView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">LoginRequiredMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">UserPassesTestMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">DetailView</span></code></p>
+<p>Display a single newsletter.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.NewsletterDetailView.context_object_name">
+<span class="sig-name descname"><span class="pre">context_object_name</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'newsletter'</span></span><a class="headerlink" href="#NewsApp.views.NewsletterDetailView.context_object_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.NewsletterDetailView.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#NewsApp.views.NewsletterDetailView.model" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="models.html#NewsApp.models.Newsletter" title="NewsApp.models.Newsletter"><code class="xref py py-class docutils literal notranslate"><span class="pre">Newsletter</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.NewsletterDetailView.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'newsletters/newsletter_detail.html'</span></span><a class="headerlink" href="#NewsApp.views.NewsletterDetailView.template_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.NewsletterDetailView.test_func">
+<span class="sig-name descname"><span class="pre">test_func</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#NewsletterDetailView.test_func"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.NewsletterDetailView.test_func" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="NewsApp.views.NewsletterListView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">NewsletterListView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#NewsletterListView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.NewsletterListView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">LoginRequiredMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">UserPassesTestMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ListView</span></code></p>
+<p>List all newsletters. Accessible to all authenticated roles.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.NewsletterListView.context_object_name">
+<span class="sig-name descname"><span class="pre">context_object_name</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'newsletters'</span></span><a class="headerlink" href="#NewsApp.views.NewsletterListView.context_object_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.NewsletterListView.get_queryset">
+<span class="sig-name descname"><span class="pre">get_queryset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#NewsletterListView.get_queryset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.NewsletterListView.get_queryset" title="Link to this definition"></a></dt>
+<dd><p>Return the list of items for this view.</p>
+<p>The return value must be an iterable and may be an instance of
+<cite>QuerySet</cite> in which case <cite>QuerySet</cite> specific behavior will be enabled.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.NewsletterListView.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#NewsApp.views.NewsletterListView.model" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="models.html#NewsApp.models.Newsletter" title="NewsApp.models.Newsletter"><code class="xref py py-class docutils literal notranslate"><span class="pre">Newsletter</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.NewsletterListView.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'newsletters/newsletter_list.html'</span></span><a class="headerlink" href="#NewsApp.views.NewsletterListView.template_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.NewsletterListView.test_func">
+<span class="sig-name descname"><span class="pre">test_func</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#NewsletterListView.test_func"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.NewsletterListView.test_func" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="NewsApp.views.NewsletterUpdateView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">NewsletterUpdateView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#NewsletterUpdateView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.NewsletterUpdateView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">LoginRequiredMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">UserPassesTestMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateView</span></code></p>
+<p>Edit a newsletter. Journalists may only edit their own.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.NewsletterUpdateView.form_class">
+<span class="sig-name descname"><span class="pre">form_class</span></span><a class="headerlink" href="#NewsApp.views.NewsletterUpdateView.form_class" title="Link to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">NewsletterForm</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.NewsletterUpdateView.form_valid">
+<span class="sig-name descname"><span class="pre">form_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">form</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#NewsletterUpdateView.form_valid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.NewsletterUpdateView.form_valid" title="Link to this definition"></a></dt>
+<dd><p>If the form is valid, save the associated model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.NewsletterUpdateView.get_success_url">
+<span class="sig-name descname"><span class="pre">get_success_url</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#NewsletterUpdateView.get_success_url"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.NewsletterUpdateView.get_success_url" title="Link to this definition"></a></dt>
+<dd><p>Return the URL to redirect to after processing a valid form.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.NewsletterUpdateView.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#NewsApp.views.NewsletterUpdateView.model" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="models.html#NewsApp.models.Newsletter" title="NewsApp.models.Newsletter"><code class="xref py py-class docutils literal notranslate"><span class="pre">Newsletter</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.NewsletterUpdateView.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'newsletters/newsletter_form.html'</span></span><a class="headerlink" href="#NewsApp.views.NewsletterUpdateView.template_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.NewsletterUpdateView.test_func">
+<span class="sig-name descname"><span class="pre">test_func</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#NewsletterUpdateView.test_func"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.NewsletterUpdateView.test_func" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="NewsApp.views.PublisherCreateView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">PublisherCreateView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#PublisherCreateView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.PublisherCreateView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">LoginRequiredMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">UserPassesTestMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">CreateView</span></code></p>
+<p>Create a new publisher (Journalists only).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.PublisherCreateView.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['name']</span></span><a class="headerlink" href="#NewsApp.views.PublisherCreateView.fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.PublisherCreateView.form_valid">
+<span class="sig-name descname"><span class="pre">form_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">form</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#PublisherCreateView.form_valid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.PublisherCreateView.form_valid" title="Link to this definition"></a></dt>
+<dd><p>If the form is valid, save the associated model.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.PublisherCreateView.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#NewsApp.views.PublisherCreateView.model" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="models.html#NewsApp.models.Publisher" title="NewsApp.models.Publisher"><code class="xref py py-class docutils literal notranslate"><span class="pre">Publisher</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.PublisherCreateView.success_url">
+<span class="sig-name descname"><span class="pre">success_url</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/article/write/'</span></span><a class="headerlink" href="#NewsApp.views.PublisherCreateView.success_url" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.PublisherCreateView.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'publishers/publisher_form.html'</span></span><a class="headerlink" href="#NewsApp.views.PublisherCreateView.template_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.PublisherCreateView.test_func">
+<span class="sig-name descname"><span class="pre">test_func</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#PublisherCreateView.test_func"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.PublisherCreateView.test_func" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="NewsApp.views.SignupView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">SignupView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#SignupView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.SignupView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">CreateView</span></code></p>
+<p>Register a new user and redirect to login on success.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.SignupView.dispatch">
+<span class="sig-name descname"><span class="pre">dispatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#SignupView.dispatch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.SignupView.dispatch" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.SignupView.form_class">
+<span class="sig-name descname"><span class="pre">form_class</span></span><a class="headerlink" href="#NewsApp.views.SignupView.form_class" title="Link to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">CustomUserCreationForm</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.SignupView.form_valid">
+<span class="sig-name descname"><span class="pre">form_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">form</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#SignupView.form_valid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.SignupView.form_valid" title="Link to this definition"></a></dt>
+<dd><p>If the form is valid, save the associated model.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.SignupView.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#NewsApp.views.SignupView.model" title="Link to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="models.html#NewsApp.models.CustomUser" title="NewsApp.models.CustomUser"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomUser</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.SignupView.success_url">
+<span class="sig-name descname"><span class="pre">success_url</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/'</span></span><a class="headerlink" href="#NewsApp.views.SignupView.success_url" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.SignupView.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'registration/signup.html'</span></span><a class="headerlink" href="#NewsApp.views.SignupView.template_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="NewsApp.views.SubscribedArticlesAPIView">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">SubscribedArticlesAPIView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#SubscribedArticlesAPIView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.SubscribedArticlesAPIView" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">APIView</span></code></p>
+<p>Return approved articles from the user’s subscribed publishers and journalists.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="NewsApp.views.SubscribedArticlesAPIView.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#SubscribedArticlesAPIView.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.SubscribedArticlesAPIView.get" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="NewsApp.views.SubscribedArticlesAPIView.permission_classes">
+<span class="sig-name descname"><span class="pre">permission_classes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'rest_framework.permissions.IsAuthenticated'&gt;]</span></span><a class="headerlink" href="#NewsApp.views.SubscribedArticlesAPIView.permission_classes" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="NewsApp.views.approve_article">
+<span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">approve_article</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pk</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#approve_article"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.approve_article" title="Link to this definition"></a></dt>
+<dd><p>Approve an article for publishing and notify the author by email.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – The HTTP request (must be POST to approve).</p></li>
+<li><p><strong>pk</strong> – Primary key of the <code class="xref py py-class docutils literal notranslate"><span class="pre">Article</span></code> to approve.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Redirect to the article detail page on success, or the approval form.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="NewsApp.views.can_approve_articles">
+<span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">can_approve_articles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#can_approve_articles"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.can_approve_articles" title="Link to this definition"></a></dt>
+<dd><p>Return <code class="docutils literal notranslate"><span class="pre">True</span></code> if <em>user</em> may approve articles (Editor only).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="NewsApp.views.can_create_content">
+<span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">can_create_content</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#can_create_content"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.can_create_content" title="Link to this definition"></a></dt>
+<dd><p>Return <code class="docutils literal notranslate"><span class="pre">True</span></code> if <em>user</em> may create content (Journalist only).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="NewsApp.views.can_delete_content">
+<span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">can_delete_content</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#can_delete_content"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.can_delete_content" title="Link to this definition"></a></dt>
+<dd><p>Return <code class="docutils literal notranslate"><span class="pre">True</span></code> if <em>user</em> may delete content (Editor or Journalist).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="NewsApp.views.can_edit_content">
+<span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">can_edit_content</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#can_edit_content"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.can_edit_content" title="Link to this definition"></a></dt>
+<dd><p>Return <code class="docutils literal notranslate"><span class="pre">True</span></code> if <em>user</em> may edit content (Editor or Journalist).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="NewsApp.views.can_view_content">
+<span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">can_view_content</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#can_view_content"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.can_view_content" title="Link to this definition"></a></dt>
+<dd><p>Return <code class="docutils literal notranslate"><span class="pre">True</span></code> if <em>user</em> holds any content-viewing role (Reader, Editor, Journalist).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="NewsApp.views.is_editor">
+<span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">is_editor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#is_editor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.is_editor" title="Link to this definition"></a></dt>
+<dd><p>Return <code class="docutils literal notranslate"><span class="pre">True</span></code> if <em>user</em> is authenticated with the Editor role.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="NewsApp.views.is_journalist">
+<span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">is_journalist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#is_journalist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.is_journalist" title="Link to this definition"></a></dt>
+<dd><p>Return <code class="docutils literal notranslate"><span class="pre">True</span></code> if <em>user</em> is authenticated with the Journalist role.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="NewsApp.views.is_reader">
+<span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">is_reader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#is_reader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.is_reader" title="Link to this definition"></a></dt>
+<dd><p>Return ‘True’ if user is authenticated and has role ‘Reader’</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="NewsApp.views.profile_view">
+<span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">profile_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#profile_view"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.profile_view" title="Link to this definition"></a></dt>
+<dd><p>Display the current user’s profile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – The HTTP request.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Rendered profile, or redirects to article write.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="NewsApp.views.reader_subscriptions">
+<span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">reader_subscriptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#reader_subscriptions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.reader_subscriptions" title="Link to this definition"></a></dt>
+<dd><p>Display the current user’s subscribed publishers and journalists.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – The HTTP request.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Rendered subscriptions page.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="NewsApp.views.subscribe_to_journalist">
+<span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">subscribe_to_journalist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">journalist_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#subscribe_to_journalist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.subscribe_to_journalist" title="Link to this definition"></a></dt>
+<dd><p>Subscribe the current user to a journalist.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>journalist_id</strong> – PK of the journalist (<code class="xref py py-class docutils literal notranslate"><span class="pre">CustomUser</span></code>) to subscribe to.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="NewsApp.views.subscribe_to_publisher">
+<span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">subscribe_to_publisher</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">publisher_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#subscribe_to_publisher"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.subscribe_to_publisher" title="Link to this definition"></a></dt>
+<dd><p>Subscribe the current user to a publisher.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>publisher_id</strong> – PK of the <code class="xref py py-class docutils literal notranslate"><span class="pre">Publisher</span></code> to subscribe to.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="NewsApp.views.unsubscribe_from_journalist">
+<span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">unsubscribe_from_journalist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">journalist_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#unsubscribe_from_journalist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.unsubscribe_from_journalist" title="Link to this definition"></a></dt>
+<dd><p>Allow readers to unsubscribe from a journalist.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>journalist_id</strong> – PK of the journalist (<code class="xref py py-class docutils literal notranslate"><span class="pre">CustomUser</span></code>) to unsubscribe from.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="NewsApp.views.unsubscribe_from_publisher">
+<span class="sig-prename descclassname"><span class="pre">NewsApp.views.</span></span><span class="sig-name descname"><span class="pre">unsubscribe_from_publisher</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">publisher_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/NewsApp/views.html#unsubscribe_from_publisher"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#NewsApp.views.unsubscribe_from_publisher" title="Link to this definition"></a></dt>
+<dd><p>Unsubscribe the current user from a publisher.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>publisher_id</strong> – PK of the <code class="xref py py-class docutils literal notranslate"><span class="pre">Publisher</span></code> to unsubscribe from.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="models.html" class="btn btn-neutral float-left" title="Models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Joshua Busby.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
