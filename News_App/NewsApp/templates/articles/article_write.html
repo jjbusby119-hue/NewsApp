@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Write Article{% endblock %}
+
+{% block content %}
+    <h2>Write an Article</h2>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    {{ form.publisher }}
+                    <a href="{% url 'publisher-create' %}">
+                        Create New Publisher
+                    </a>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {{ form.non_field_errors }}
+
+        {{ form.title.errors }}
+
+        {{ form.publisher.errors }}
+
+        {{ form.content.errors }}
+{% endblock %}

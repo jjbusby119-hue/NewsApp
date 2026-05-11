@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+            <div class="card">
+                <div class="card-header">
+                    <h2>Profile</h2>
+                </div>
+                <div class="card">
+                    <p><strong>Username:</strong> {{ user.username }}</p>
+                    <p><strong>Email:</strong> {{ user.email }}</p>
+                    <p><strong>Role:</strong> {{ user.role }}</p>
+                </div>
+                <div class="card-footer">
+                    <button type="button">
+                        <a href="{% url 'article_write' %}">Write Article</a>
+                    </button>
+                </div>
+            </div>
+</div>
+{% endblock %}

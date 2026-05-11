@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Newsletter Detail{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>{{ newsletter.title }}</h1>
+    <p class="text-muted">Published on {{ newsletter.created_at|date:"F j, Y" }}</p>
+    <hr>
+    <div class="newsletter-content">
+        {{ newsletter.content|linebreaks }}
+        {% for article in newsletter.articles.all %}
+            <p><a href="{% url 'article-detail' article.pk %}">{{ article.title }}</a></p>
+        {% endfor %}
+    </div>
+    {% if user.is_authenticated and user.role == 'Editor' or user.role == 'Journalist' %}
+        <a href="{% url 'newsletter_form' newsletter.id %}">Edit</a>
+        
+        <a href="{% url 'newsletter_delete' newsletter.id %}">Delete</a>
+    {% endif %}
+</div>
+{% endblock %}
