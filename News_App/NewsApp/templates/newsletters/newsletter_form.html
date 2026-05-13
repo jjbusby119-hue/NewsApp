@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {% if object %}
+        Edit Newsletter
+    {% else %}
+        Create Newsletter
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <h1>
+        {% if object %}
+            Edit Newsletter
+        {% else %}
+            Create Newsletter
+        {% endif %}
+    </h1>
+
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit" class="positive-btn">
+            Save
+        </button>
+    </form>
+
+    {% if object %}
+        <a href="{% url 'newsletter_delete' object.id %}">
+            Delete Newsletter
+        </a>
+    {% endif %}
+
+    <br><br>
+
+    <a href="{% url 'newsletter-list' %}">
+        Cancel
+    </a>
+
+</div>
+
+{% endblock %}
