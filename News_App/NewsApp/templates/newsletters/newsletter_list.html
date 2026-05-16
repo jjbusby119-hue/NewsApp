@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Newsletter List{% endblock %}
+
+{% block content %}
+    <h1>Newsletter List</h1>
+
+    <button><a href="{% url 'newsletter_form' %}">Create New Newsletter</a></button>
+
+    <ul>
+        {% for newsletter in newsletters %}
+            <li>
+                <a href="{% url 'newsletter-detail' newsletter.pk %}">{{ newsletter.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}My Subscriptions{% endblock %}
+
+{% block content %}
+    <h1>My Subscriptions</h1>
+    <p>Here you can manage your subscriptions to publishers and journalists.</p>
+
+    <hr>
+
+    <h2>Subscribed Publishers</h2>
+    {% if subscribed_publishers %}
+        <ul>
+            {% for publisher in subscribed_publishers %}
+                <li>
+                    {{ publisher.name }}
+                    
+                    {# Unsubscribe Form #}
+                    <form action="{% url 'unsubscribe-publisher' publisher.id %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit">Unsubscribe</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>You are not subscribed to any publishers.</p>
+    {% endif %}
+
+    <hr>
+
+
+    <h2>Subscribed Journalists</h2>
+    {% if subscribed_journalists %}
+        <ul>
+            {% for customuser in subscribed_journalists %}
+                <li>
+                    {{ customuser.username }}
+                    
+                    {# Unsubscribe Form #}
+                    <form action="{% url 'unsubscribe-journalist' customuser.id %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit">Unsubscribe</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>You are not subscribed to any journalists.</p>
+    {% endif %}
+
+{% endblock %}
