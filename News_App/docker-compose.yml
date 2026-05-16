@@ -1,0 +1,42 @@
+services:
+  db:
+    image: mariadb:10.11  # or mariadb:latest, mariadb:11.1
+    container_name: news_db
+    restart: always
+    environment:
+      MARIADB_DATABASE: ${MYSQL_DATABASE:-news_db}
+      MARIADB_USER: ${MYSQL_USER:-news_app_user}
+      MARIADB_PASSWORD: ${MYSQL_PASSWORD:-password}
+      MARIADB_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-rootpassword}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD", "mariadb-admin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD:-rootpassword}"]
+      timeout: 20s
+      retries: 10
+
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
+      - DJANGO_DEBUG=${DJANGO_DEBUG:-True}
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_NAME=${MYSQL_DATABASE:-news_db}
+      - DB_USER=${MYSQL_USER:-news_app_user}
+      - DB_PASSWORD=${MYSQL_PASSWORD:-password}
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: always
+
+volumes:
+  mariadb_data:
